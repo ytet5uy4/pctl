@@ -14,16 +14,16 @@ $ git clone https://github.com/tetsuya00/Proxy-Settingfiles.git ~/.proxy
 $ git config --global include.path "~/.gitconfig.proxy"
 ```
 
-あとはset_proxy.shとunset_proxy.sh内の`ADRESS:PORT`を書き換えれば準備完了です
+あとはset_proxy.bashとunset_proxy.bash内の`ADRESS:PORT`を書き換えれば準備完了です
 
 # 使い方
 ```bash
-$ source ~/.proxy/set_proxy.sh
-$ source ~/.proxy/unset_proxy.sh
+$ source ~/.proxy/set_proxy.bash
+$ source ~/.proxy/unset_proxy.bash
 ```
 # おまけ
 以下のコマンドを実行するとプロキシを設定するときは`sp`、プロキシを解除するときは`usp`で変更できるようになります。
 ```bash
-$ alias sp="source ~/.proxy/set_proxy.sh"
-$ alias usp="source ~/.proxy/unset_proxy.sh"
+$ alias sp="source ~/.proxy/set_proxy.bash"
+$ alias usp="source ~/.proxy/unset_proxy.bash"
 ```
