@@ -1,7 +1,7 @@
 #!/bin/bash
 case "$1" in
     "-s" )
-        if [ -n "$http_proxy" ] && [ -n "$https_proxy" ] && [ -e ~/.gitconfig.proxy ]; then
+        if [ -n $http_proxy ] && [ -n $https_proxy ] && [ -e ~/.gitconfig.proxy ]; then
             echo "既に設定されています"
         else
             printf "Setting proxy..."
@@ -13,7 +13,7 @@ case "$1" in
         fi
         ;;
     "-u" )
-        if [ -z "$http_proxy" ] && [ -z "$https_proxy" ] && [ ! -e ~/.gitconfig.proxy ]; then
+        if [ -z $http_proxy ] && [ -z $https_proxy ] && [ ! -e ~/.gitconfig.proxy ]; then
             echo "既に解除されています"
         else
             printf "Unsetting proxy..."
