@@ -9,7 +9,7 @@ case "$1" in
             git config -f ~/.gitconfig.proxy https.proxy https://ADRESS:PORT
             export http_proxy="http://ADRESS:PORT/"
             export https_proxy="https://ADRESS:PORT/"
-            echo -e "\e[1;34mdone\e[m"
+            echo -e "\033[1;36mdone\033[0;39m"
         fi
         ;;
     "-u" )
@@ -20,7 +20,7 @@ case "$1" in
             rm -f ~/.gitconfig.proxy >/dev/null 2>&1
             export http_proxy=""
             export https_proxy=""
-            echo -e "\e[1;34mdone\e[m"
+            echo -e "\033[1;36mdone\033[0;39m"
         fi
         ;;
     "-h" | "--help" )
@@ -37,7 +37,7 @@ case "$1" in
         echo -e "詳細な情報は 'pset --help'\n"
         ;;
     * )
-        echo -e "\e[1;31mError\e[m"
+        echo -e "\033[1;31mError\033[m"
         echo -e "詳細な情報は 'pset --help'\n"
         ;;
 esac
