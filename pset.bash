@@ -1,6 +1,6 @@
 #!/bin/bash
 case "$1" in
-    "-s" )
+    "-s" | "--set" )
         if [ -n $http_proxy ] && [ -n $https_proxy ] && [ -e ~/.gitconfig.proxy ]; then
             echo "既に設定されています"
         else
@@ -12,7 +12,7 @@ case "$1" in
             echo -e "\033[1;36mdone\033[0;39m"
         fi
         ;;
-    "-u" )
+    "-u" | "--unset" )
         if [ -z $http_proxy ] && [ -z $https_proxy ] && [ ! -e ~/.gitconfig.proxy ]; then
             echo "既に解除されています"
         else
@@ -24,12 +24,12 @@ case "$1" in
         fi
         ;;
     "-h" | "--help" )
-        echo "使用法: pset [引数]            "
-        echo "                               "
-        echo "引数:                          "
-        echo "  -s           プロキシを設定  "
-        echo "  -u           プロキシを解除  "
-        echo "  -h, --help   ヘルプを表示する"
+        echo "使用法: pset [引数]             "
+        echo "                                "
+        echo "引数:                           "
+        echo "  -s, --set     プロキシを設定  "
+        echo "  -u, --unset   プロキシを解除  "
+        echo "  -h, --help    ヘルプを表示する"
         echo
         ;;
     -* )
