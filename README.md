@@ -10,7 +10,7 @@
 
 # 準備
 ```bash
-$ git clone https://github.com/tetsuya00/pset.git ~/.proxy
+$ git clone https://github.com/j4ve1in/pset.git ~/.proxy
 $ git config --global include.path "~/.gitconfig.proxy"
 $ alias pset="source ~/.proxy/pset.bash"
 ```
