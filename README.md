@@ -2,6 +2,8 @@
 ![Screenshot](/pset.png "Screenshot")
 
 # 適用される範囲
+以下のコマンドでかつインストールしたユーザー内でしか適用されません。
+* apt-get
 * curl
 * git
 * wget
