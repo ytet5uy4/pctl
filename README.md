@@ -2,7 +2,6 @@
 ![Screenshot](/pset.png "Screenshot")
 
 # 適用される範囲
-* apt-get
 * curl
 * git
 * wget
@@ -12,7 +11,7 @@
 ```bash
 $ git clone https://github.com/j4ve1in/pset.git ~/.proxy
 $ git config --global include.path "~/.gitconfig.proxy"
-$ alias pset="source ~/.proxy/pset.bash"
+$ echo "alias pset='source ~/.proxy/pset.bash'" >> ~/.${SHELL}rc
 ```
 
 あとはpset.bash内の`ADRESS:PORT`を書き換えれば準備完了です
