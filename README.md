@@ -11,7 +11,7 @@
 ```bash
 $ git clone https://github.com/j4ve1in/pset.git ~/.proxy
 $ git config --global include.path "~/.gitconfig.proxy"
-$ echo "alias pset='source ~/.proxy/pset.bash'" >> ~/.${SHELL}rc
+$ echo "alias pset='source ~/.proxy/pset.bash'" >> ~/.bashrc
 ```
 
 あとはpset.bash内の`ADRESS:PORT`を書き換えれば準備完了です
