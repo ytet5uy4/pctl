@@ -5,10 +5,11 @@ case "$1" in
             echo "既に設定されています"
         else
             printf "Setting proxy..."
-            git config -f ~/.gitconfig.proxy url."https://github.com/".insteadOf git@github.com:
-            git config -f ~/.gitconfig.proxy url."https://github.com/".insteadOf git://github.com/
-            export http_proxy="http://ADRESS:PORT/"
-            export https_proxy="https://ADRESS:PORT/"
+            git config -f ~/.gitconfig.proxy --add url.https://github.com/.insteadOf git@github.com:
+            git config -f ~/.gitconfig.proxy --add url.https://github.com/.insteadOf git://github.com/
+            ADRESS_AND_PORT="ADRESS:PORT"
+            export http_proxy="http://${ADRESS_AND_PORT}/"
+            export https_proxy="https://${ADRESS_AND_PORT}/"
             echo -e "\033[1;36mdone\033[0;39m"
         fi
         ;;
