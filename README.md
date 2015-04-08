@@ -2,7 +2,7 @@
 ![Screenshot](/pset.png "Screenshot")
 
 # 適用される範囲
-以下のコマンドでかつインストールしたユーザー内でしか適用されません。(su、sudoなどを使うと適用されません。)
+以下のコマンドでかつインストールしたユーザー内でしか適用されません。(suやsudoなどを使ってユーザーを切り替えてしまうと適用されません。)
 * apt-get
 * curl
 * git
@@ -12,7 +12,7 @@
 # 準備
 ```bash
 $ git clone https://github.com/j4ve1in/pset.git ~/.proxy
-$ git config --global include.path "~/.gitconfig.proxy"
+$ git config --global --add include.path "~/.gitconfig.proxy"
 $ echo "alias pset='source ~/.proxy/pset.bash'" >> ~/.${SHELL##*/}rc
 ```
 
