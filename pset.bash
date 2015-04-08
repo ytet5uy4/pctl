@@ -19,8 +19,8 @@ case "$1" in
         else
             printf "Unsetting proxy..."
             rm -f ~/.gitconfig.proxy >/dev/null 2>&1
-            export http_proxy=""
-            export https_proxy=""
+            unset http_proxy
+            unset https_proxy
             echo -e "\033[1;36mdone\033[0;39m"
         fi
         ;;
