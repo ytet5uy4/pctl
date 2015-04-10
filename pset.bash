@@ -7,10 +7,15 @@ case "$1" in
             printf "Setting proxy..."
             git config -f ~/.gitconfig.proxy --add url.https://github.com/.insteadOf git@github.com:
             git config -f ~/.gitconfig.proxy --add url.https://github.com/.insteadOf git://github.com/
-            ADRESS_AND_PORT="ADRESS:PORT"
-            export http_proxy="http://${ADRESS_AND_PORT}/"
-            export https_proxy="https://${ADRESS_AND_PORT}/"
-            echo -e "\033[1;36mdone\033[0;39m"
+            if [ -f ~/.proxy/adress_and_port ]; then
+                ADRESS_AND_PORT=$(cat ~/.proxy/adress_and_port)
+                export http_proxy="http://${ADRESS_AND_PORT}/"
+                export https_proxy="https://${ADRESS_AND_PORT}/"
+                echo -e "\033[1;36mdone\033[0;39m"
+            else
+                echo -e "\033[1;31merror\033[m"
+                echo "アドレスとポートが設定されていません"
+            fi
         fi
         ;;
     "-u" | "--unset" )

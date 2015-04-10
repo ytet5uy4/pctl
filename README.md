@@ -10,13 +10,15 @@
 * yum
 
 # 準備
+以下のコマンドを実行してください。
+`ADRESS:PORT`の部分は自分の設定と置き換えて実行してください。
+
 ```bash
 $ git clone https://github.com/j4ve1in/pset.git ~/.proxy
 $ git config --global --add include.path "~/.gitconfig.proxy"
 $ echo "alias pset='source ~/.proxy/pset.bash'" >> ~/.${SHELL##*/}rc
+$ echo "ADRESS:PORT" > ~/.proxy/adress_and_port
 ```
-
-あとはpset.bash内の`ADRESS:PORT`を書き換えれば準備完了です
 
 # 使い方
 プロキシを設定する時
