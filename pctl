@@ -1,0 +1,76 @@
+typeset -g CMDNAME=${0##*/}
+typeset -g VERSION='v1.0'
+
+typeset -gA fg=(
+  success '32'
+  error   '129'
+)
+
+main() {
+  [ -n "$2" ] && error_message 'too many arguments' && return 1
+  case "$1" in
+    "-s" | "--set" )
+      printf "Setting proxy..."
+      if [ -n "$http_proxy" ] && [ -n "$https_proxy" ]; then
+        cprintf 'error\n' $fg[error]
+        printf '  Environment variable has already set.\n\n'
+        return 1
+      elif [ -z "$PROXY_ADDRESS" ] || [ -z "$PROXY_PORT" ]; then
+        cprintf 'error\n' $fg[error]
+        printf '  Not set `$PROXY_ADDRESS` or `$PROXY_PORT`.\n'
+        printf '  $ export PROXY_ADDRESS=proxy.example.com PROXY_PORT=8080\n\n'
+        return 1
+      fi
+      export http_proxy="http://$PROXY_ADDRESS:$PROXY_PORT/"
+      export https_proxy="https://$PROXY_ADDRESS:$PROXY_PORT/"
+      cprintf 'done\n\n' $fg[success]
+      ;;
+    "-u" | "--unset" )
+      printf "Unsetting proxy..."
+      if [ -z "$http_proxy" ] && [ -z "$https_proxy" ]; then
+        cprintf 'error\n' $fg[error]
+        printf '  Environment variable has already unset.\n\n'
+        return 1
+      fi
+      unset http_proxy
+      unset https_proxy
+      cprintf 'done\n\n' $fg[success]
+      ;;
+    "-S" | "--status" )
+      echo "Current status"
+      echo "    http_proxy: $http_proxy"
+      echo "    https_proxy: $https_proxy"
+      echo
+      ;;
+    "-h" | "--help" )
+      echo "Usage: $CMDNAME [OPTIONS]                   "
+      echo "Options:                                    "
+      echo "    -s, --set     Setting environment variable of proxy  "
+      echo "    -u, --unset   Unsetting environment variable of proxy"
+      echo "    -S, --status  Check environment variable of proxy    "
+      echo "    -h, --help    Display help                           "
+      echo "    -v, --version Display version information            "
+      echo
+      ;;
+    "-v" | "--version" )
+      echo "$CMDNAME $VERSION"
+      echo
+      ;;
+    -* )
+      error_message "illegal option -- '$(echo $1 | sed 's/^-*//')'" && return 1
+      ;;
+    * )
+      error_message "illegal argument -- $1" && return 1
+      ;;
+  esac
+}
+
+error_message() {
+  echo "$CMDNAME: $1"
+  echo -e "Try '$CMDNAME --help' for more information.\n"
+}
+
+cprintf() { printf "%b%b%b" "\e[1;38;5;${2};49m" $1 "\e[0;39;49m"; }
+
+main $@
+# vim: ft=zsh sw=2 ts=2 et

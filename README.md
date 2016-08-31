@@ -1,31 +1,21 @@
-# pset
-![Screenshot](/pset.png "Screenshot")
+# Overview
+Proxy setting script
 
-# 適用される範囲
-以下のコマンドでかつインストールしたユーザー内でしか適用されません。(suやsudoなどを使ってユーザーを切り替えてしまうと適用されません。)
-* apt-get
-* curl
-* git
-* wget
-* yum
-
-# 準備
-以下のコマンドを実行してください。
-`ADRESS:PORT`の部分は自分の設定と置き換えて実行してください。
-
-```bash
-$ git clone https://github.com/ytet5uy4/pset.git ~/.proxy
-$ git config --global --add include.path "~/.gitconfig.proxy"
-$ echo "alias pset='source ~/.proxy/pset.bash'" >> ~/.${SHELL##*/}rc
-$ echo "ADRESS:PORT" > ~/.proxy/adress_and_port
+# Installation
+```zsh
+% git clone https://github.com/ytet5uy4/pctl.git /path/to/dir
+% echo 'fpath=($fpath /path/to/dir(N-/)) && autoload -Uz pctl' >> ~/.zshrc
 ```
 
-# 使い方
-プロキシを設定する時
-```bash
-$ pset -s
+# Configuration
+```zsh
+% echo 'export PROXY_ADDRESS=proxy.example.com PORT=8080' >> ~/.zshenv
+% sudo visudo
+Defaults env_keep += "http_proxy https_proxy"
 ```
-プロキシを解除する時
-```bash
-$ pset -u
-```
+
+# License
+Copyright (c) 2015 ytet5uy4  
+Released under the MIT License, see **[LICENSE.md]**.
+
+[LICENSE.md]: //github.com/ytet5uy4/pctl/blob/master/LICENSE.md

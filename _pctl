@@ -1,0 +1,10 @@
+#compdef pctl
+
+_pctl() {
+  _arguments \
+    '(- *)'{-s,--set}'[Setting environment variable of proxy]' \
+    '(- *)'{-u,--unset}'[Unsetting environment variable of proxy]' \
+    '(- *)'{-S,--status}'[Check environment variable of proxy]' \
+    '(- *)'{-h,--help}'[Display help]' \
+    '(- *)'{-v,--version}'[Display version information]'
+}
