@@ -1,3 +1,5 @@
+![Screenshot]
+
 # Overview
 Proxy setting script
 
@@ -18,4 +20,5 @@ Defaults env_keep += "http_proxy https_proxy"
 Copyright (c) 2015 ytet5uy4  
 Released under the MIT License, see **[LICENSE.md]**.
 
+[Screenshot]: https://raw.githubusercontent.com/wiki/ytet5uy4/pctl/screenshot.png
 [LICENSE.md]: //github.com/ytet5uy4/pctl/blob/master/LICENSE.md
