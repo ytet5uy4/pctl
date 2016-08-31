@@ -4,6 +4,12 @@
 Proxy setting script
 
 # Installation
+## Using zplug
+```zsh
+% zplug 'ytet5uy4/pctl'
+```
+
+## Using git
 ```zsh
 % git clone https://github.com/ytet5uy4/pctl.git /path/to/dir
 % echo 'fpath=($fpath /path/to/dir(N-/)) && autoload -Uz pctl' >> ~/.zshrc
