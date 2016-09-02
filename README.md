@@ -1,7 +1,7 @@
 ![Screenshot]
 
 # Overview
-Proxy setting script
+This is zsh plugin to toggle the environment variables of proxy.
 
 # Installation
 ## Using zplug
@@ -12,7 +12,7 @@ Proxy setting script
 ## Using git
 ```zsh
 % git clone https://github.com/ytet5uy4/pctl.git /path/to/dir
-% echo 'fpath=($fpath /path/to/dir(N-/)) && autoload -Uz pctl' >> ~/.zshrc
+% echo '. /path/to/dir/init.zsh' >> ~/.zshrc
 ```
 
 # Configuration
