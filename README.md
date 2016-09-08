@@ -1,7 +1,7 @@
-![Screenshot]
-
 # Overview
 This is zsh plugin to toggle the environment variables of proxy.
+
+![Screenshot]
 
 # Installation
 ## Using zplug
