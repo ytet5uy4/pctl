@@ -1,4 +1,4 @@
-typeset -g CMDNAME=${0##*/}
+typeset -g CMDNAME=$0:t
 typeset -g VERSION='v1.0'
 
 typeset -gA fg=(
@@ -32,8 +32,7 @@ main() {
         printf '  Environment variable has already unset.\n\n'
         return 1
       fi
-      unset http_proxy
-      unset https_proxy
+      unset http_proxy https_proxy
       cprintf 'done\n\n' $fg[success]
       ;;
     "-S" | "--status" )
@@ -53,8 +52,7 @@ main() {
       echo
       ;;
     "-v" | "--version" )
-      echo "$CMDNAME $VERSION"
-      echo
+      echo "$CMDNAME $VERSION\n"
       ;;
     -* )
       error_message "illegal option -- '$(echo $1 | sed 's/^-*//')'" && return 1
