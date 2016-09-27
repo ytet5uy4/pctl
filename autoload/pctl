@@ -21,8 +21,8 @@ main() {
         printf '  $ export PROXY_ADDRESS=proxy.example.com PROXY_PORT=8080\n\n'
         return 1
       fi
-      export http_proxy="http://$PROXY_ADDRESS:$PROXY_PORT/"
-      export https_proxy="https://$PROXY_ADDRESS:$PROXY_PORT/"
+      export http_proxy="http://$PROXY_ADDRESS:$PROXY_PORT"
+      export https_proxy="http://$PROXY_ADDRESS:$PROXY_PORT"
       cprintf 'done\n\n' $fg[success]
       ;;
     "-u" | "--unset" )
