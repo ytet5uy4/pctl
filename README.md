@@ -45,8 +45,9 @@ Copyright (c) 2015 ytet5uy4
 Released under the MIT License, see **[LICENSE.md][license-link]**.
 
 [screenshot]: https://raw.githubusercontent.com/wiki/ytet5uy4/pctl/screenshot.png
-[demo-link]: https://asciinema.org/a/59no1i98y61fvpdcq3n086r3h
-[release-link]: https://github.com/ytet5uy4/pctl/releases/latest
 [release-badge]: https://img.shields.io/github/release/ytet5uy4/pctl.svg?style=flat-square
-[license-link]: LICENSE.md
 [license-badge]: https://img.shields.io/github/license/ytet5uy4/pctl.svg?style=flat-square
+
+[demo-link]: //asciinema.org/a/59no1i98y61fvpdcq3n086r3h
+[release-link]: //github.com/ytet5uy4/pctl/releases/latest
+[license-link]: LICENSE.md
