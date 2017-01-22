@@ -1,47 +1,49 @@
-typeset -g CMDNAME=$0:t
-typeset -g VERSION='v1.0'
+#!/bin/zsh
 
-typeset -gA fg=(
+typeset -g CMDNAME=$0:t
+typeset -g VERSION='v0.1.0'
+
+typeset -gA color=(
   success '32'
   error   '129'
 )
 
 main() {
-  [ -n "$2" ] && error_message 'too many arguments' && return 1
+  [[ -n $2 ]] && error_message 'too many arguments' && return 1
   case "$1" in
-    "-s" | "--set" )
-      printf "Setting proxy..."
-      if [ -n "$http_proxy" ] && [ -n "$https_proxy" ]; then
-        cprintf 'error\n' $fg[error]
+    -s | --set )
+      printf 'Setting proxy...'
+      if [[ -n $http_proxy ]] && [[ -n $https_proxy ]]; then
+        cprintf 'error\n' $color[error]
         printf '  Environment variable has already set.\n\n'
         return 1
-      elif [ -z "$PROXY_ADDRESS" ] || [ -z "$PROXY_PORT" ]; then
-        cprintf 'error\n' $fg[error]
+      elif [[ -z $PROXY_ADDRESS ]] || [[ -z $PROXY_PORT ]]; then
+        cprintf 'error\n' $color[error]
         printf '  Not set `$PROXY_ADDRESS` or `$PROXY_PORT`.\n'
         printf '  $ export PROXY_ADDRESS=proxy.example.com PROXY_PORT=8080\n\n'
         return 1
       fi
       export http_proxy="http://$PROXY_ADDRESS:$PROXY_PORT"
       export https_proxy="http://$PROXY_ADDRESS:$PROXY_PORT"
-      cprintf 'done\n\n' $fg[success]
+      cprintf 'done\n\n' $color[success]
       ;;
-    "-u" | "--unset" )
-      printf "Unsetting proxy..."
-      if [ -z "$http_proxy" ] && [ -z "$https_proxy" ]; then
-        cprintf 'error\n' $fg[error]
+    -u | --unset )
+      printf 'Unsetting proxy...'
+      if [[ -z $http_proxy ]] && [[ -z $https_proxy ]]; then
+        cprintf 'error\n' $color[error]
         printf '  Environment variable has already unset.\n\n'
         return 1
       fi
       unset http_proxy https_proxy
-      cprintf 'done\n\n' $fg[success]
+      cprintf 'done\n\n' $color[success]
       ;;
-    "-S" | "--status" )
-      echo "Current status"
+    -S | --status )
+      echo 'Current status'
       echo "    http_proxy: $http_proxy"
       echo "    https_proxy: $https_proxy"
       echo
       ;;
-    "-h" | "--help" )
+    -h | --help )
       echo "Usage: $CMDNAME [OPTIONS]                   "
       echo "Options:                                    "
       echo "    -s, --set     Setting environment variable of proxy  "
@@ -51,8 +53,8 @@ main() {
       echo "    -v, --version Display version information            "
       echo
       ;;
-    "-v" | "--version" )
-      echo "$CMDNAME $VERSION\n"
+    -v | --version )
+      printf '%s %s\n\n' "$CMDNAME" "$VERSION"
       ;;
     -* )
       error_message "illegal option -- '$(echo $1 | sed 's/^-*//')'" && return 1
@@ -64,11 +66,10 @@ main() {
 }
 
 error_message() {
-  echo "$CMDNAME: $1"
-  echo -e "Try '$CMDNAME --help' for more information.\n"
+  printf '%s: %s\n' "$CMDNAME" "$1"
+  printf "Try '%s --help' for more information.\n\n" "$CMDNAME"
 }
 
 cprintf() { printf "%b%b%b" "\e[1;38;5;${2};49m" $1 "\e[0;39;49m"; }
 
 main $@
-# vim: ft=zsh sw=2 ts=2 et
