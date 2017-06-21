@@ -25,10 +25,10 @@ zplug 'ytet5uy4/pctl'
 
 ## Configuration
 
-Add the following to your `.zshrc`:
+Add the following to your `.zshenv`:
 
 ```zsh
-export PROXY_ADDRESS=proxy.example.com PORT=8080
+export PCTL_PROXY_ADDRESS=proxy.example.com PCTL_PROXY_PORT=8080
 ```
 
 To keep the environment variables of proxy when using `sudo`,

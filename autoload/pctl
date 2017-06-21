@@ -17,14 +17,14 @@ main() {
         cprintf 'error\n' $color[error]
         printf '  Environment variable has already set.\n\n'
         return 1
-      elif [[ -z $PROXY_ADDRESS ]] || [[ -z $PROXY_PORT ]]; then
+      elif [[ -z $PCTL_PROXY_ADDRESS ]] || [[ -z $PCTL_PROXY_PORT ]]; then
         cprintf 'error\n' $color[error]
-        printf '  Not set `$PROXY_ADDRESS` or `$PROXY_PORT`.\n'
-        printf '  $ export PROXY_ADDRESS=proxy.example.com PROXY_PORT=8080\n\n'
+        printf '  Not set `$PCTL_PROXY_ADDRESS` or `$PCTL_PROXY_PORT`.\n'
+        printf '  $ export PCTL_PROXY_ADDRESS=proxy.example.com PCTL_PROXY_PORT=8080\n\n'
         return 1
       fi
-      export http_proxy="http://$PROXY_ADDRESS:$PROXY_PORT"
-      export https_proxy="http://$PROXY_ADDRESS:$PROXY_PORT"
+      export http_proxy="http://$PCTL_PROXY_ADDRESS:$PCTL_PROXY_PORT"
+      export https_proxy="http://$PCTL_PROXY_ADDRESS:$PCTL_PROXY_PORT"
       cprintf 'done\n\n' $color[success]
       ;;
     -u | --unset )
