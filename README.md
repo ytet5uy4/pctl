@@ -31,6 +31,16 @@ Add the following to your `.zshenv`:
 export PCTL_PROXY_ADDRESS=proxy.example.com PCTL_PROXY_PORT=8080
 ```
 
+or
+
+Run following command:
+
+```zsh
+$ envchain --set proxy PCTL_PROXY_ADDRESS PCTL_PROXY_PORT
+proxy.PCTL_PROXY_ADDRESS: proxy.example.com
+proxy.PCTL_PROXY_PORT: 8080
+```
+
 To keep the environment variables of proxy when using `sudo`,
 append the following to `/etc/sudoers` via `sudo visudo`:
 

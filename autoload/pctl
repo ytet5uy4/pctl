@@ -17,14 +17,27 @@ main() {
         cprintf 'error\n' $color[error]
         printf '  Environment variable has already set.\n\n'
         return 1
-      elif [[ -z $PCTL_PROXY_ADDRESS ]] || [[ -z $PCTL_PROXY_PORT ]]; then
-        cprintf 'error\n' $color[error]
-        printf '  Not set `$PCTL_PROXY_ADDRESS` or `$PCTL_PROXY_PORT`.\n'
-        printf '  $ export PCTL_PROXY_ADDRESS=proxy.example.com PCTL_PROXY_PORT=8080\n\n'
-        return 1
+      elif [[ -z `envchain proxy printenv PCTL_PROXY_ADDRESS` ]] || \
+        [[ -z `envchain proxy printenv PCTL_PROXY_PORT` ]]; then
+        if [[ -z $PCTL_PROXY_ADDRESS ]] || \
+          [[ -z $PCTL_PROXY_PORT ]]; then
+          cprintf 'error\n' $color[error]
+          printf '  Not set `$PCTL_PROXY_ADDRESS` or `$PCTL_PROXY_PORT`.\n'
+          printf '  $ export PCTL_PROXY_ADDRESS=proxy.example.com PCTL_PROXY_PORT=8080\n\n'
+          return 1
+        fi
       fi
-      export http_proxy="http://$PCTL_PROXY_ADDRESS:$PCTL_PROXY_PORT"
-      export https_proxy="http://$PCTL_PROXY_ADDRESS:$PCTL_PROXY_PORT"
+      if [[ -z $PCTL_PROXY_ADDRESS ]] || [[ -z $PCTL_PROXY_PORT ]]; then
+        : "Set variable for proxy" && () {
+          local address=`envchain proxy printenv PCTL_PROXY_ADDRESS`
+          local port=`envchain proxy printenv PCTL_PROXY_PORT`
+          export http_proxy="http://$address:$port"
+          export https_proxy="http://$address:$port"
+        }
+      else
+        export http_proxy="http://$PCTL_PROXY_ADDRESS:$PCTL_PROXY_PORT"
+        export https_proxy="http://$PCTL_PROXY_ADDRESS:$PCTL_PROXY_PORT"
+      fi
       cprintf 'done\n\n' $color[success]
       ;;
     -u | --unset )
