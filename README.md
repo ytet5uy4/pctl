@@ -33,7 +33,7 @@ export PCTL_PROXY_ADDRESS=proxy.example.com PCTL_PROXY_PORT=8080
 
 or
 
-Run following command:
+If you have [envchain][envchain-link] installed, run following command:
 
 ```zsh
 $ envchain --set proxy PCTL_PROXY_ADDRESS PCTL_PROXY_PORT
@@ -61,3 +61,4 @@ Released under the MIT License, see **[LICENSE.md][license-link]**.
 [demo-link]: //asciinema.org/a/59no1i98y61fvpdcq3n086r3h
 [release-link]: //github.com/ytet5uy4/pctl/releases/latest
 [license-link]: LICENSE.md
+[envchain-link]: //github.com/sorah/envchain
